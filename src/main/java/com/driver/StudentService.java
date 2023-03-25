@@ -20,7 +20,7 @@ public class StudentService {
     }
 
     public void techerStudentPair(String studentName, String teacherName){
-        studentRepository.teacherStudentPair(studentName, teacherName);
+        studentRepository.addStudentTeacherPair(studentName, teacherName);
     }
     public Student getStudentByName(String studentName){
         return studentRepository.getStudentByName(studentName);
@@ -31,18 +31,18 @@ public class StudentService {
     }
 
     public List<String> getListOfStudentOfTeacher(String teacher){
-        return studentRepository.getStudnetListForteacher(teacher);
+        return studentRepository.getStudentsByTeacherName(teacher);
     }
 
     public List<String> getListOfStudents(){
-        return studentRepository.getListOfStudents();
+        return studentRepository.getAllStudents();
     }
 
     public void deleteTeacher(String teacher){
-        studentRepository.deleteTeacher(teacher);
+        studentRepository.deleteTeacherByName(teacher);
     }
 
     public void deleteAllTeachersAndStudents(){
-        studentRepository.deleteAllTeachersAndStudents();
+        studentRepository.deleteAllTeachers();
     }
 }

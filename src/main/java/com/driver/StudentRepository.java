@@ -24,7 +24,7 @@ public class StudentRepository {
         teacherdb.put(teacher.getName(), teacher);
     }
 
-    public void teacherStudentPair(String studentName, String teacherName){
+    public void addStudentTeacherPair(String studentName, String teacherName){
         teacherStudentPairdb.put(studentName, teacherName);
     }
     public Student getStudentByName(String studentName){
@@ -35,7 +35,7 @@ public class StudentRepository {
         return teacherdb.get(teacherName);
     }
 
-    public List<String> getStudnetListForteacher(String teacher){
+    public List<String> getStudentsByTeacherName(String teacher){
         List<String> list = new ArrayList<>();
         for(Map.Entry<String,String> entry : teacherStudentPairdb.entrySet()){
             if(entry.getValue().equals(teacher)){
@@ -46,7 +46,7 @@ public class StudentRepository {
         return list;
     }
 
-    public List<String> getListOfStudents(){
+    public List<String> getAllStudents(){
         List<String> studentList = new ArrayList<>();
         for(String student : studentdb.keySet()){
             studentList.add(student);
@@ -54,7 +54,7 @@ public class StudentRepository {
         return studentList;
     }
 
-    public void deleteTeacher(String teacher){
+    public void deleteTeacherByName(String teacher){
         teacherdb.remove(teacher);
         for(Map.Entry<String, String> entry : teacherStudentPairdb.entrySet()){
             if(entry.getValue().equals(teacher)){
@@ -65,7 +65,7 @@ public class StudentRepository {
         }
     }
 
-    public void deleteAllTeachersAndStudents(){
+    public void deleteAllTeachers(){
 
         for(Map.Entry<String,String> entry : teacherStudentPairdb.entrySet()){
             String student = entry.getKey();
